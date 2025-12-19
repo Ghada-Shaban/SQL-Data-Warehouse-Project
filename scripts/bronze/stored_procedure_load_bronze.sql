@@ -19,8 +19,8 @@ Usage Example:
 
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN	
- DECLARE @start_time DATETIME,@end_time DATETIME,@start_time_batch DATETIME,@end_time_batch DATETIME; 
-		BEGIN TRY
+  DECLARE @start_time DATETIME,@end_time DATETIME,@start_time_batch DATETIME,@end_time_batch DATETIME; 
+  BEGIN TRY
 		SET @start_time_batch= GETDATE();
 		PRINT'============================'
 		PRINT'Loading The Bronze Layer...'
@@ -30,11 +30,12 @@ BEGIN
 		PRINT'*********************************'
 
 		PRINT'============================'
-		PRINT'Loading CRM TABLES...'
+		PRINT'Loading CRM Tables...'
 		PRINT'============================'
+			
 		SET @start_time= GETDATE();
 		PRINT 'Truncating Table: bronze.crm_cust_info';
-	TRUNCATE TABLE bronze.crm_cust_info;
+	    TRUNCATE TABLE bronze.crm_cust_info;
 		PRINT 'Inserting Data Into: bronze.crm_cust_info';
 		BULK INSERT bronze.crm_cust_info
 		FROM 'C:\Users\ghada\Downloads\datasets\source_crm\cust_info.csv'
@@ -44,11 +45,12 @@ BEGIN
 			TABLOCK
 		);
 		SET @end_time=GETDATE();
-		PRINT'Table Loading Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
+		PRINT'Table Load Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
+			
         SET @start_time= GETDATE();
 	    PRINT 'Truncating Table: bronze.crm_prd_info';
-	TRUNCATE TABLE bronze.crm_prd_info;
+	    TRUNCATE TABLE bronze.crm_prd_info;
 		PRINT 'Inserting Data Into: bronze.crm_prd_info';
 		BULK INSERT bronze.crm_prd_info
 		FROM 'C:\Users\ghada\Downloads\datasets\source_crm\prd_info.csv'
@@ -58,12 +60,12 @@ BEGIN
 			TABLOCK
 		);
 		SET @end_time=GETDATE();
-		PRINT'Table Loading Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
+		PRINT'Table Load Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
 
         SET @start_time= GETDATE();
 	    PRINT 'Truncating Table: bronze.crm_sales_details';
-	TRUNCATE TABLE bronze.crm_sales_details;
+	    TRUNCATE TABLE bronze.crm_sales_details;
 		PRINT 'Inserting Data Into: bronze.crm_sales_details';
 		BULK INSERT bronze.crm_sales_details
 		FROM 'C:\Users\ghada\Downloads\datasets\source_crm\sales_details.csv'
@@ -73,17 +75,18 @@ BEGIN
 			TABLOCK
 		);
 		SET @end_time=GETDATE();
-		PRINT'Table Loading Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
+		PRINT'Table Load Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
+			
 		
 		PRINT'============================'
-		PRINT'Loading ERP TABLES...'
+		PRINT'Loading ERP Tables...'
 		PRINT'============================'
 
 		
         SET @start_time= GETDATE();
         PRINT 'Truncating Table: bronze.erp_cust_az12';
-	TRUNCATE TABLE bronze.erp_cust_az12;
+	    TRUNCATE TABLE bronze.erp_cust_az12;
 		PRINT 'Inserting Data Into: bronze.erp_cust_az12';
 		BULK INSERT bronze.erp_cust_az12
 		FROM 'C:\Users\ghada\Downloads\datasets\source_erp\CUST_AZ12.csv'
@@ -92,13 +95,13 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
-
 		SET @end_time=GETDATE();
-		PRINT'Table Loading Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
+		PRINT'Table Load Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
+			
 		SET @start_time= GETDATE();
         PRINT 'Truncating Table: bronze.erp_loc_a101';
-	TRUNCATE TABLE bronze.erp_loc_a101;
+	    TRUNCATE TABLE bronze.erp_loc_a101;
 		PRINT 'Inserting Data Into: bronze.erp_loc_a101';
 		BULK INSERT bronze.erp_loc_a101
 		FROM 'C:\Users\ghada\Downloads\datasets\source_erp\LOC_A101.csv'
@@ -108,7 +111,7 @@ BEGIN
 			TABLOCK
 		);
 		SET @end_time=GETDATE();
-		PRINT'Table Loading Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
+		PRINT'Table Load Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
 
         SET @start_time= GETDATE();
@@ -122,20 +125,20 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
-
 		SET @end_time=GETDATE();
-		PRINT'Table Loading Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
+		PRINT'Table Load Duration: '+ CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
+			
 		SET @end_time_batch=GETDATE();
-		PRINT'Batch Loading Duration: '+ CAST(DATEDIFF(second,@start_time_batch,@end_time_batch) AS NVARCHAR) + 'Seconds'
+		PRINT'Batch Load Duration: '+ CAST(DATEDIFF(second,@start_time_batch,@end_time_batch) AS NVARCHAR) + 'Seconds'
 		PRINT'*********************************'
-		END TRY
-		BEGIN CATCH
+	END TRY
+	BEGIN CATCH
 		PRINT '====================='
 		PRINT'Error Occured During Loading Bronze Layer...'
 		PRINT'Error Message:'+ ERROR_MESSAGE();
 		PRINT'Error Message:'+ CAST(ERROR_NUMBER() AS NVARCHAR);
 		PRINT'Error Message:'+ CAST(ERROR_STATE() AS NVARCHAR);
 		PRINT '====================='
-		END CATCH
+	END CATCH
 END
