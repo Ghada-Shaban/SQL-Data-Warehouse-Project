@@ -10,7 +10,7 @@ All views are based on transformations and joins from the Silver layer.
 
 ---
 
-## 1. gold.dim_customers
+**1. gold.dim_customers**
 - **Purpose:** provides a enriched view of all customers (demographic and geographic data)
 
 | Column Name       | Data Type         | Description                                     |
@@ -27,7 +27,7 @@ All views are based on transformations and joins from the Silver layer.
 | create_date       | DATE              | Date when the customer record was created                   |
 
 ---
-## 2. gold.dim_products 
+**2. gold.dim_products**
 - **Purpose:**  represents the current catalog of products with full hierarchy
 
 | Column Name     | Data Type         | Description                                     |
@@ -45,7 +45,7 @@ All views are based on transformations and joins from the Silver layer.
 | start_date      | DATE              | Date when this product version became active                        |
 
 ---
-## 3. gold.fact_sales
+**3. gold.fact_sales**
 - **Purpose:** Stores transactional sales data for analytical purposes
 
 | Column Name      | Data Type         | Description                                     |
@@ -60,6 +60,7 @@ All views are based on transformations and joins from the Silver layer.
 | quantity         | INT               | Number of units sold for the line item                                                |
 | price            | INT     |The price per unit of the product for the line item, in whole currency units                                                 |
 
+---
 **Notes**  
 - Sales Amount = Quantity × Price (business rule)  
 - Surrogate keys protect from source system changes  
