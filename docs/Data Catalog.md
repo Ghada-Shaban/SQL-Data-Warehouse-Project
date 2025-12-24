@@ -42,7 +42,7 @@ All views are based on transformations and joins from the Silver layer.
 | start_date      | DATE              | Date when this product version became active                        |
 
 ## 3. gold.fact_sales
--**Purpose:** Stores transactional sales data for analytical purposes
+- **Purpose:** Stores transactional sales data for analytical purposes
 
 | Column Name      | Data Type         | Description                                     |
 |------------------|-------------------|---------------------------------------------------------------------|
