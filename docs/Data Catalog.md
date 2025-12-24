@@ -8,6 +8,8 @@ The Gold layer contains three business-ready views forming a classic Star Schema
 
 All views are based on transformations and joins from the Silver layer.
 
+---
+
 ## 1. gold.dim_customers
 - **Purpose:** provides a enriched view of all customers (demographic and geographic data)
 
@@ -24,6 +26,7 @@ All views are based on transformations and joins from the Silver layer.
 | birthdate         | DATE              | Customer's date of birth formatted as YYYY-MM-DD (e.g., 1971-10-06)                                           |
 | create_date       | DATE              | Date when the customer record was created                   |
 
+---
 ## 2. gold.dim_products 
 - **Purpose:**  represents the current catalog of products with full hierarchy
 
@@ -41,6 +44,7 @@ All views are based on transformations and joins from the Silver layer.
 | product_line    | NVARCHAR(50)      |The specific product line or series to which the product belongs (e.g.,Road, Mountain , Touring..)       |
 | start_date      | DATE              | Date when this product version became active                        |
 
+---
 ## 3. gold.fact_sales
 - **Purpose:** Stores transactional sales data for analytical purposes
 
