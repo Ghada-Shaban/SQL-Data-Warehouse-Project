@@ -1,6 +1,6 @@
 # Gold Layer Data Catalog 
 
-**Overview**  
+**Overview :**  
 The Gold layer contains three business-ready views forming a classic Star Schema for sales analytics:  
 - **dim_customers**: Enriched customer dimension  
 - **dim_products**: Current product dimension  
