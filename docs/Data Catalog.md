@@ -8,10 +8,10 @@ The Gold layer contains three business-ready views forming a classic Star Schema
 
 All views are based on transformations and joins from the Silver layer.
 
-## 1. gold.dim_customers – Customer Dimension
+## 1. gold.dim_customers
 - **Purpose:** provides a enriched view of all customers (demographic and geographic data)
 
-| Column Name       | Data Type         | Description / Business Meaning                                      |
+| Column Name       | Data Type         | Description                                     |
 |-------------------|-------------------|---------------------------------------------------------------------|
 | customer_key      | INT               | Surrogate key (unique warehouse identifier)                         |
 | customer_id       | INT               | Unique numerical identifier assigned to each customer                                      |
@@ -24,10 +24,10 @@ All views are based on transformations and joins from the Silver layer.
 | birthdate         | DATE              | Customer's date of birth formatted as YYYY-MM-DD (e.g., 1971-10-06)                                           |
 | create_date       | DATE              | Date when the customer record was created                   |
 
-## 2. gold.dim_products – Product Dimension
+## 2. gold.dim_products 
 - **Purpose:**  represents the current catalog of products with full hierarchy
 
-| Column Name     | Data Type         | Description / Business Meaning                                      |
+| Column Name     | Data Type         | Description                                     |
 |-----------------|-------------------|---------------------------------------------------------------------|
 | product_key     | INT               | Surrogate key (unique warehouse identifier)                         |
 | product_id      | INT    | A unique identifier assigned to the product for internal tracking and referencing                                        |
@@ -41,10 +41,10 @@ All views are based on transformations and joins from the Silver layer.
 | product_line    | NVARCHAR(50)      |The specific product line or series to which the product belongs (e.g.,Road, Mountain , Touring..)       |
 | start_date      | DATE              | Date when this product version became active                        |
 
-## 3. gold.fact_sales – Sales Fact Table
+## 3. gold.fact_sales
 -**Purpose:** Stores transactional sales data for analytical purposes
 
-| Column Name      | Data Type         | Description / Business Meaning                                      |
+| Column Name      | Data Type         | Description                                     |
 |------------------|-------------------|---------------------------------------------------------------------|
 | order_number     | NVARCHAR(50)      | Unique identifier for each sales order                                         |
 | product_key      | INT               | Surrogate key linking the order to the product dimension table                                         |
