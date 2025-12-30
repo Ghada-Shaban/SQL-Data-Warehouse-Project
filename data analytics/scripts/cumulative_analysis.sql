@@ -8,7 +8,7 @@ Purpose:
     - Useful for growth analysis or identifying long-term trends.
 
 SQL Functions Used:
-
+    - Date Functions: YEAR(),DATETRUNC()
     - Window Functions: SUM() OVER(), AVG() OVER()
 ===============================================================================
 */
