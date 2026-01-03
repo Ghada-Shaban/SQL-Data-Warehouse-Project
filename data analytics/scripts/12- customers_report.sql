@@ -94,8 +94,8 @@ SELECT
 	total_sales,
 	total_products,
 	lifespan,
-	CASE WHEN total_sales = 0 THEN 0
-	  ELSE total_sales / total_orders
+	CASE WHEN total_orders = 0 THEN 0
+		 ELSE total_sales / total_orders
     END AS avg_order_value,
 	CASE WHEN lifespan = 0 THEN total_sales
 	 ELSE total_sales / lifespan
