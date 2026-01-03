@@ -93,8 +93,8 @@ SELECT
 	    total_customers,
 	    avg_selling_price,
 
-        CASE WHEN total_sales = 0 THEN 0
-	         ELSE CAST(total_sales AS decimal(10,2)) / NULLIF(total_orders,0)
+        CASE WHEN total_orders = 0 THEN 0
+	         ELSE CAST(total_sales AS decimal(10,2)) / total_orders
         END AS avg_order_revenue,
 
         CASE WHEN lifespan = 0 THEN total_sales
